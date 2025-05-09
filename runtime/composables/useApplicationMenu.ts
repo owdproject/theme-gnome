@@ -1,7 +1,7 @@
 import {ref, computed} from "vue"
 import {useApplicationManager} from "@owdproject/core/runtime/composables/useApplicationManager"
 import {useAppEntries} from "@owdproject/core/runtime/composables/useAppEntries"
-import {getSortedCategories} from "../utils/utilsApplications"
+import {getSortedCategories} from "../utils/utilApplications"
 
 const enabled = ref(false)
 const categoryActive = ref()
