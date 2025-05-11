@@ -38,7 +38,7 @@ This theme for Open Web Desktop recreates the Adwaita GNOME UI.
 
 ## Compatibility
 
-The application is compatible with Open Web Desktop client version `3.0.0-alpha.8`.
+The application is compatible with Open Web Desktop client version `3.0.0-alpha.9`.
 
 ## License
 
