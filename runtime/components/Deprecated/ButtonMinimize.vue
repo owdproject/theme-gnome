@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <Button icon>
@@ -19,7 +17,7 @@
   &:before {
     position: absolute;
     background: rgb(10, 10, 10);
-    content: "";
+    content: '';
   }
 
   &:before {

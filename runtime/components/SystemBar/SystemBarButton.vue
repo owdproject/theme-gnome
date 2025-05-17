@@ -1,6 +1,6 @@
 <template>
   <Button rounded pt:root="owd-system-bar__button">
-    <slot/>
+    <slot />
   </Button>
 </template>
 

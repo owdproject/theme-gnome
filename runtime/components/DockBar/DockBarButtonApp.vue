@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 
 const props = defineProps<{
   application: IApplicationController
@@ -20,19 +20,17 @@ function onApplicationClick() {
 </script>
 
 <template>
-  <DockBarButton
-    @click="onApplicationClick"
-  >
+  <DockBarButton @click="onApplicationClick">
     <Icon
-        v-if="application.config.icon"
-        :name="application.config.icon"
-        :size="48"
+      v-if="application.config.icon"
+      :name="application.config.icon"
+      :size="48"
     />
 
     <div class="owd-dock-bar__windows">
       <div
-          v-for="index in [...Array(application.windows.size).keys()]"
-          class="owd-dock-bar__windows__window-dot"
+        v-for="index in [...Array(application.windows.size).keys()]"
+        class="owd-dock-bar__windows__window-dot"
       />
     </div>
   </DockBarButton>

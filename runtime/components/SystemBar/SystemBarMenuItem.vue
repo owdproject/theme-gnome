@@ -6,10 +6,8 @@ defineProps<{
 
 <template>
   <ListItem>
-    {{application.config.name}}
+    {{ application.config.name }}
   </ListItem>
 </template>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

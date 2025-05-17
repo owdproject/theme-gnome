@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 
 const props = defineProps<{
   window?: IWindowController
@@ -15,30 +15,24 @@ function onWorkspaceWindowDragStart(e) {
 
 <template>
   <CoreWindow
-      v-bind="$props"
-      v-show="window?.state?.active ?? true"
-      :draggable="desktopWorkspaceStore.overview ? 'true' : 'false'"
-      @dragstart="onWorkspaceWindowDragStart"
+    v-bind="$props"
+    v-show="window?.state?.active ?? true"
+    :draggable="desktopWorkspaceStore.overview ? 'true' : 'false'"
+    @dragstart="onWorkspaceWindowDragStart"
   >
-    <Sheet
-        border rounded
-    >
+    <Sheet border rounded>
       <WindowNav>
-
         <template v-slot:prepend>
-          <slot name="nav-prepend"/>
+          <slot name="nav-prepend" />
         </template>
 
         <template v-slot:append>
-          <slot name="nav-append"/>
+          <slot name="nav-append" />
         </template>
-
       </WindowNav>
 
       <WindowContent>
-
-        <slot/>
-
+        <slot />
       </WindowContent>
     </Sheet>
   </CoreWindow>

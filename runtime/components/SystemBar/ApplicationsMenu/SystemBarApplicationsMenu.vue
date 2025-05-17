@@ -1,41 +1,44 @@
 <script setup lang="ts">
-import {useApplicationMenu} from "../../../composables/useApplicationMenu"
-import {useDesktopManager} from "@owdproject/core/runtime/composables/useDesktopManager"
+import { useApplicationMenu } from '../../../composables/useApplicationMenu'
+import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
 
-import {useTemplateRef} from "vue";
-import {onClickOutside} from "@vueuse/core";
+import { useTemplateRef } from 'vue'
+import { onClickOutside } from '@vueuse/core'
 
 const applicationMenu = useApplicationMenu()
 const desktopManager = useDesktopManager()
 const applicationMenuElement = useTemplateRef('applicationMenuElement')
 
-onClickOutside(applicationMenuElement, () => applicationMenu.enabled.value = false)
+onClickOutside(
+  applicationMenuElement,
+  () => (applicationMenu.enabled.value = false),
+)
 </script>
 
 <template>
   <div ref="applicationMenuElement">
-
     <SystemBarButton
-        @click="applicationMenu.enabled.value = !applicationMenu.enabled.value"
+      @click="applicationMenu.enabled.value = !applicationMenu.enabled.value"
     >
       {{ $t('systemBar.applications.label') }}
     </SystemBarButton>
 
     <SystemBarMenu
-        v-if="applicationMenu.enabled.value"
-        class="owd-system-bar__applications-menu"
+      v-if="applicationMenu.enabled.value"
+      class="owd-system-bar__applications-menu"
     >
       <div>
         <SystemBarApplicationsMenuCategories
-            :categories="applicationMenu.categories.value"
-            @select="category => applicationMenu.categoryActive.value = category"
+          :categories="applicationMenu.categories.value"
+          @select="
+            (category) => (applicationMenu.categoryActive.value = category)
+          "
         />
       </div>
       <div>
-        <SystemBarApplicationsMenuApplicationList/>
+        <SystemBarApplicationsMenuApplicationList />
       </div>
     </SystemBarMenu>
-
   </div>
 </template>
 

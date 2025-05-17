@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useApplicationManager} from "@owdproject/core/runtime/composables/useApplicationManager"
+import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
 
 const applicationManager = useApplicationManager()
 
@@ -12,8 +12,8 @@ function onMenuClick() {
   <div class="owd-dock-bar">
     <div class="owd-dock-bar__inner">
       <DockBarButtonApp
-          v-for="application of applicationManager.appsRunning"
-          :application="application"
+        v-for="application of applicationManager.appsRunning"
+        :application="application"
       />
       <Divider layout="vertical" />
       <DockBarButtonMenu @click="onMenuClick" />

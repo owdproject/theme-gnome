@@ -1,7 +1,7 @@
 <script setup>
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
-import {useDesktopManager} from "@owdproject/core/runtime/composables/useDesktopManager"
-import {computed} from "@vue/reactivity"
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
+import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
+import { computed } from '@vue/reactivity'
 
 const desktopManager = useDesktopManager()
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
@@ -19,20 +19,18 @@ const classes = computed(() => {
 
 <template>
   <div :class="classes">
-
     <div class="owd-desktop__system-bar__left">
-      <SystemBarWorkspaces v-if="desktopManager.config.workspaces?.enabled"/>
-      <SystemBarApplicationsMenu/>
+      <SystemBarWorkspaces v-if="desktopManager.config.workspaces?.enabled" />
+      <SystemBarApplicationsMenu />
     </div>
 
     <div class="owd-desktop__system-bar__middle">
-      <SystemBarNotificationsMenu/>
+      <SystemBarNotificationsMenu />
     </div>
 
     <div class="owd-desktop__system-bar__right">
       <SystemBarSettingsMenu />
     </div>
-
   </div>
 </template>
 
@@ -91,7 +89,7 @@ const classes = computed(() => {
   }
 
   &__activities {
-    @media(max-width: 800px) {
+    @media (max-width: 800px) {
       display: none;
     }
   }

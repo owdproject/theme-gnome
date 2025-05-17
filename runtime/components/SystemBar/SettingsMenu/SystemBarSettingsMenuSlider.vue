@@ -1,19 +1,25 @@
 <script setup lang="ts">
 defineProps<{
-  iconPrepend?: string;
-  iconAppend?: string;
+  iconPrepend?: string
+  iconAppend?: string
 }>()
 </script>
 
 <template>
   <div class="owd-system-bar__settings-menu__slider">
-    <div v-if="iconPrepend" class="owd-system-bar__settings-menu__slider__icon-prepend">
+    <div
+      v-if="iconPrepend"
+      class="owd-system-bar__settings-menu__slider__icon-prepend"
+    >
       <Icon :name="iconPrepend" :size="20" />
     </div>
     <div class="owd-system-bar__settings-menu__slider__content">
       <slot />
     </div>
-    <div v-if="iconAppend" class="owd-system-bar__settings-menu__slider__icon-append">
+    <div
+      v-if="iconAppend"
+      class="owd-system-bar__settings-menu__slider__icon-append"
+    >
       <Icon :name="iconAppend" />
     </div>
   </div>

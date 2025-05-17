@@ -1,5 +1,5 @@
 <script setup>
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
 
@@ -11,9 +11,11 @@ function toggleDesktopOverview() {
 <template>
   <SystemBarButton @click="toggleDesktopOverview">
     <div class="owd-system-bar__workspace-icon">
-      <div class="owd-system-bar__workspace-icon__dot owd-system-bar__workspace-icon__dot--wide"/>
-      <div class="owd-system-bar__workspace-icon__dot"/>
-      <div class="owd-system-bar__workspace-icon__dot"/>
+      <div
+        class="owd-system-bar__workspace-icon__dot owd-system-bar__workspace-icon__dot--wide"
+      />
+      <div class="owd-system-bar__workspace-icon__dot" />
+      <div class="owd-system-bar__workspace-icon__dot" />
     </div>
   </SystemBarButton>
 </template>

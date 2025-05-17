@@ -1,17 +1,23 @@
 <script setup lang="ts">
-import {useDesktopVolumeStore} from "@owdproject/core/runtime/stores/storeDesktopVolume";
-import {ref, watch} from "@vue/reactivity"
-import {useDebounceFn} from "@vueuse/core"
+import { useDesktopVolumeStore } from '@owdproject/core/runtime/stores/storeDesktopVolume'
+import { ref, watch } from '@vue/reactivity'
+import { useDebounceFn } from '@vueuse/core'
 
 const desktopVolumeStore = useDesktopVolumeStore()
 
 const volume = ref(desktopVolumeStore.master)
 
-const saveMasterVolumeDebounced = useDebounceFn(() => desktopVolumeStore.setMasterVolume(volume.value), 250)
+const saveMasterVolumeDebounced = useDebounceFn(
+  () => desktopVolumeStore.setMasterVolume(volume.value),
+  250,
+)
 
-watch(() => volume.value, value => {
-  saveMasterVolumeDebounced()
-})
+watch(
+  () => volume.value,
+  (value) => {
+    saveMasterVolumeDebounced()
+  },
+)
 </script>
 
 <template>

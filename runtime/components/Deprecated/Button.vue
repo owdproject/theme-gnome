@@ -58,7 +58,8 @@ const classes = computed(() => {
   padding: 0;
   border: 1px solid #1b1b1b #1b1b1b #151515 #1b1b1b;
 
-  &:active, &--active {
+  &:active,
+  &--active {
     :deep(.owd-button__icon) {
       margin-top: 2px;
     }

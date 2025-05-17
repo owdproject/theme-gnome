@@ -1,11 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <Sheet
-      class="owd-system-bar__menu"
-  >
+  <Sheet class="owd-system-bar__menu">
     <slot />
   </Sheet>
 </template>

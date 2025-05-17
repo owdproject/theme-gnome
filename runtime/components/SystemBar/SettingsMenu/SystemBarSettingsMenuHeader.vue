@@ -1,10 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="owd-system-bar__settings-menu__header">
-
     <div>
       <SystemBarSettingsMenuButtonBattery />
     </div>
@@ -27,7 +24,6 @@
         qwe
       </Button>
     -->
-
   </div>
 </template>
 

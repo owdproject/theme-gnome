@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {computed} from "vue"
+import { computed } from 'vue'
 
 const props = defineProps<{
-  rounded?: boolean,
+  rounded?: boolean
 }>()
 
 const classes = computed(() => {
@@ -25,7 +25,7 @@ const classes = computed(() => {
 <style scoped lang="scss">
 .owd-sheet {
   background: #353535;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   border-radius: var(--p-window-border-radius);
 }
 </style>

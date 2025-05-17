@@ -1,21 +1,25 @@
 <script setup lang="ts">
-import html2canvas from "html2canvas";
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
-import {ref, onMounted, watch} from "vue";
+import html2canvas from 'html2canvas'
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
+import { ref, onMounted, watch } from 'vue'
 
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
 const previewEnabled = ref(false)
 
 async function generateDesktopWorkspacePreview(workspaceId: string) {
-  const workspace = document.querySelector(`.owd-desktop__workspace-inner[data-workspace-id="${workspaceId}"]`);
-  const workspacePreview = document.querySelector(`.owd-desktop__workspace-previews__item[data-workspace-id="${workspaceId}"]`);
+  const workspace = document.querySelector(
+    `.owd-desktop__workspace-inner[data-workspace-id="${workspaceId}"]`,
+  )
+  const workspacePreview = document.querySelector(
+    `.owd-desktop__workspace-previews__item[data-workspace-id="${workspaceId}"]`,
+  )
 
   if (workspacePreview) {
     await html2canvas(workspace, {
       allowTaint: true,
     }).then(function (canvas) {
       workspacePreview.innerHTML = ''
-      workspacePreview.appendChild(canvas);
+      workspacePreview.appendChild(canvas)
     })
   }
 }
@@ -28,13 +32,16 @@ function onWorkspacePreviewClick(workspaceId: string) {
   }
 }
 
-watch(() => desktopWorkspaceStore.overview, (val) => {
-  if (!val) {
-    previewEnabled.value = false
-  } else {
-    setTimeout(() => previewEnabled.value = true, 200)
-  }
-})
+watch(
+  () => desktopWorkspaceStore.overview,
+  (val) => {
+    if (!val) {
+      previewEnabled.value = false
+    } else {
+      setTimeout(() => (previewEnabled.value = true), 200)
+    }
+  },
+)
 
 onMounted(async () => {
   setTimeout(async () => {
@@ -49,25 +56,26 @@ onMounted(async () => {
 
 <template>
   <div
-      :class="[
+    :class="[
       'owd-desktop__workspace-previews',
-      {'owd-desktop__workspace-previews--enabled': previewEnabled}
+      { 'owd-desktop__workspace-previews--enabled': previewEnabled },
     ]"
   >
-
     <div class="owd-desktop__workspace-previews__container">
       <div
-          v-for="(workspaceId) of desktopWorkspaceStore.list"
-          :key="workspaceId"
-          :data-workspace-id="workspaceId"
-          :class="[
-            'owd-desktop__workspace-previews__item',
-            {'owd-desktop__workspace-previews__item--active': workspaceId === desktopWorkspaceStore.active}
+        v-for="workspaceId of desktopWorkspaceStore.list"
+        :key="workspaceId"
+        :data-workspace-id="workspaceId"
+        :class="[
+          'owd-desktop__workspace-previews__item',
+          {
+            'owd-desktop__workspace-previews__item--active':
+              workspaceId === desktopWorkspaceStore.active,
+          },
         ]"
-          @click="onWorkspacePreviewClick(workspaceId)"
+        @click="onWorkspacePreviewClick(workspaceId)"
       />
     </div>
-
   </div>
 </template>
 
@@ -84,7 +92,7 @@ onMounted(async () => {
     height: 100%;
   }
 
-  @media(max-height: 700px) {
+  @media (max-height: 700px) {
     //display: none;
   }
 

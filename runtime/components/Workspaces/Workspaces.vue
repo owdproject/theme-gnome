@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import {Carousel, Slide} from 'vue3-carousel';
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
-import {useApplicationManager} from "@owdproject/core/runtime/composables/useApplicationManager"
-import {useDesktopManager} from "@owdproject/core/runtime/composables/useDesktopManager"
+import { Carousel, Slide } from 'vue3-carousel'
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
+import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
+import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
 
 const applicationManager = useApplicationManager()
 const desktopManager = useDesktopManager()
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
 
 function onWorkspaceWindowDragDrop(e: any, workspaceId: string) {
-  e.preventDefault();
+  e.preventDefault()
 
-  const windowId = e.dataTransfer.getData("text")
-  const window: IWindowController = applicationManager.getWindowOpenedId(windowId)
+  const windowId = e.dataTransfer.getData('text')
+  const window: IWindowController =
+    applicationManager.getWindowOpenedId(windowId)
 
   window.actions.setWorkspace(workspaceId)
 }
@@ -28,34 +29,32 @@ function onWorkspaceClick(workspaceId: string) {
 
 <template>
   <div class="owd-desktop__workspace-container">
-
     <Carousel
-        :model-value="desktopWorkspaceStore.workspaceActiveIndex"
-        :items-to-show="1"
-        snap-align="start"
-        :mouse-drag="false"
-        :enabled="desktopManager.config.workspaces?.enabled"
-        :mouse-wheel="desktopWorkspaceStore.overview"
-        :touch-drag="desktopWorkspaceStore.overview"
-        @keydown.stop
+      :model-value="desktopWorkspaceStore.workspaceActiveIndex"
+      :items-to-show="1"
+      snap-align="start"
+      :mouse-drag="false"
+      :enabled="desktopManager.config.workspaces?.enabled"
+      :mouse-wheel="desktopWorkspaceStore.overview"
+      :touch-drag="desktopWorkspaceStore.overview"
+      @keydown.stop
     >
       <Slide
-          v-for="(workspaceId, index) of desktopWorkspaceStore.list"
-          :key="index"
-          @click.native="onWorkspaceClick(workspaceId)"
-          @drop="e => onWorkspaceWindowDragDrop(e, workspaceId)"
-          @dragover="e => e.preventDefault()"
-          class="owd-desktop__workspace"
+        v-for="(workspaceId, index) of desktopWorkspaceStore.list"
+        :key="index"
+        @click.native="onWorkspaceClick(workspaceId)"
+        @drop="(e) => onWorkspaceWindowDragDrop(e, workspaceId)"
+        @dragover="(e) => e.preventDefault()"
+        class="owd-desktop__workspace"
       >
         <div
-            class="owd-desktop__workspace-inner"
-            :data-workspace-id="workspaceId"
+          class="owd-desktop__workspace-inner"
+          :data-workspace-id="workspaceId"
         >
-          <slot :workspace-id="workspaceId"/>
+          <slot :workspace-id="workspaceId" />
         </div>
       </Slide>
     </Carousel>
-
   </div>
 </template>
 

@@ -29,10 +29,8 @@ This theme for Open Web Desktop recreates the Adwaita GNOME UI.
     ```typescript
     // owd.config.ts
     export default defineDesktopConfig({
-        theme: '@owdproject/theme-gnome',
-        apps: [
-            '@owdproject/app-about',
-        ]
+      theme: '@owdproject/theme-gnome',
+      apps: ['@owdproject/app-about'],
     })
     ```
 

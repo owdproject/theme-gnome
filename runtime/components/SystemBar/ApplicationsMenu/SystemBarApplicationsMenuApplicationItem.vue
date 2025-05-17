@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <ListItem>
-    <Icon :name="entry.icon"/>
+    <Icon :name="entry.icon" />
     {{ entry.title }}
   </ListItem>
 </template>

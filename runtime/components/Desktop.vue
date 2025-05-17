@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {useDesktopManager} from "@owdproject/core/runtime/composables/useDesktopManager"
-import {useDesktopWorkspaceStore} from "@owdproject/core/runtime/stores/storeDesktopWorkspace"
+import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
+import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 
 const props = defineProps<{
   systemBar?: DesktopSystemBarConfig
@@ -12,46 +12,36 @@ const desktopWorkspaceStore = useDesktopWorkspaceStore()
 
 <template>
   <CoreDesktop
-      v-bind="$props"
-      :class="{
-        'owd-desktop--overview-enabled': desktopWorkspaceStore.overview
+    v-bind="$props"
+    :class="{
+      'owd-desktop--overview-enabled': desktopWorkspaceStore.overview,
     }"
   >
-
-    <SystemBar
-        v-if="desktop.config.systemBar?.enabled"
-    />
+    <SystemBar v-if="desktop.config.systemBar?.enabled" />
 
     <div class="owd-desktop__search">
       <input placeholder="Type to search" />
     </div>
 
-    <WorkspacesPreview
-        v-if="desktop.config.workspaces?.enabled"
-    />
+    <WorkspacesPreview v-if="desktop.config.workspaces?.enabled" />
 
     <Workspaces>
-      <template v-slot="{workspaceId}">
-
-        <Background/>
+      <template v-slot="{ workspaceId }">
+        <Background />
 
         <DesktopContent>
-          <CoreApplicationRender
-              :workspace-filter="workspaceId"
-          />
-          <slot/>
+          <CoreApplicationRender :workspace-filter="workspaceId" />
+          <slot />
         </DesktopContent>
-
       </template>
     </Workspaces>
 
     <div
-        v-if="desktop.config.workspaces?.enabled"
-        class="owd-desktop__dock-bar"
+      v-if="desktop.config.workspaces?.enabled"
+      class="owd-desktop__dock-bar"
     >
-      <DockBar/>
+      <DockBar />
     </div>
-
   </CoreDesktop>
 </template>
 
