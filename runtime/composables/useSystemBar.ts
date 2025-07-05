@@ -1,28 +1,19 @@
 import { ref, computed } from 'vue'
-import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
-import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
+import { useAppConfig } from 'nuxt/app'
 
-export function useSystemBar(_config?: DesktopSystemBarConfig | undefined) {
-  const applicationManager = useApplicationManager()
-  const desktopManager = useDesktopManager()
+export function useSystemBar() {
+  const appConfig = useAppConfig()
 
-  const config = desktopManager.config
+  const enabled = computed(() => {
+    return appConfig.desktop?.systemBar?.enabled
+  })
 
-  const defaultTerminalApp = desktopManager.getDefaultApp('terminal')
-  const defaultAuthApp = desktopManager.getDefaultApp('auth')
-
-  const enabled = ref(false)
-  const windows = computed(() => applicationManager.windowsOpened)
-
-  const menu = computed(() => {
-    const systemBarMenu: any = []
-
-    return systemBarMenu
+  const position = computed(() => {
+    return appConfig.desktop?.systemBar?.position
   })
 
   return {
-    config,
-    windows,
-    menu,
+    enabled,
+    position,
   }
 }

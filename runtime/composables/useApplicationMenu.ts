@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
-import { useAppEntries } from '@owdproject/core/runtime/composables/useAppEntries'
+import { useApplicationEntries } from '@owdproject/core/runtime/composables/useApplicationEntries'
 import { getSortedCategories } from '../utils/utilApplications'
 
 const enabled = ref(false)
@@ -8,7 +8,7 @@ const categoryActive = ref()
 
 export function useApplicationMenu() {
   const applicationManager = useApplicationManager()
-  const appEntries = useAppEntries()
+  const applicationEntries = useApplicationEntries()
 
   const categories = computed(() => {
     return getSortedCategories(applicationManager.apps)
@@ -19,7 +19,7 @@ export function useApplicationMenu() {
       return []
     }
 
-    return appEntries.sortedAppEntries(
+    return applicationEntries.sortedAppEntries(
       'title',
       (entry) => entry.category === categoryActive.value,
     ).value

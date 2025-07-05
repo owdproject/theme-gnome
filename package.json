@@ -1,6 +1,6 @@
 {
   "name": "@owdproject/theme-gnome",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Open Web Desktop theme",
   "homepage": "https://github.com/owdproject/theme-gnome#readme",
   "bugs": {
@@ -20,6 +20,6 @@
     "html2canvas": "^1.4.1"
   },
   "peerDependencies": {
-    "@owdproject/core": "^3.1.0"
+    "@owdproject/core": "^3.1.4"
   }
 }

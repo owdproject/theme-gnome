@@ -12,10 +12,13 @@ function onMenuClick() {
   <div class="owd-dock-bar">
     <div class="owd-dock-bar__inner">
       <DockBarButtonApp
-        v-for="application of applicationManager.appsRunning"
+        v-for="application of applicationManager.appsRunning.value"
         :application="application"
       />
-      <Divider layout="vertical" />
+      <Divider
+        v-if="applicationManager.appsRunning.value.length > 0"
+        layout="vertical"
+      />
       <DockBarButtonMenu @click="onMenuClick" />
     </div>
   </div>

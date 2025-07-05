@@ -3,10 +3,11 @@ import { Carousel, Slide } from 'vue3-carousel'
 import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
 import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
+import { useWorkspaces } from '../../composables/useWorkspaces'
 
 const applicationManager = useApplicationManager()
-const desktopManager = useDesktopManager()
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
+const workspaces = useWorkspaces()
 
 function onWorkspaceWindowDragDrop(e: any, workspaceId: string) {
   e.preventDefault()
@@ -34,7 +35,7 @@ function onWorkspaceClick(workspaceId: string) {
       :items-to-show="1"
       snap-align="start"
       :mouse-drag="false"
-      :enabled="desktopManager.config.workspaces?.enabled"
+      :enabled="workspaces?.enabled"
       :mouse-wheel="desktopWorkspaceStore.overview"
       :touch-drag="desktopWorkspaceStore.overview"
       @keydown.stop

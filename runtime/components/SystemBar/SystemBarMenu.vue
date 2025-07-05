@@ -1,9 +1,9 @@
-<script setup lang="ts"></script>
-
 <template>
-  <Sheet class="owd-system-bar__menu">
-    <slot />
-  </Sheet>
+  <Card pt:root="p-card--border" class="owd-system-bar__menu">
+    <template #content>
+      <slot />
+    </template>
+  </Card>
 </template>
 
 <style scoped lang="scss">

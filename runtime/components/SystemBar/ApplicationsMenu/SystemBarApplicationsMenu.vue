@@ -48,16 +48,20 @@ onClickOutside(
   height: 440px;
   max-height: 80dvh;
   width: 400px;
-  display: flex;
-  flex-direction: row;
 
-  > div {
-    &:nth-child(1) {
-      width: 40%;
+  :deep(.p-card-content) {
+    display: flex;
+    flex-direction: row;
+
+    > div {
+      &:nth-child(1) {
+        width: 40%;
+      }
+      &:nth-child(2) {
+        width: 60%;
+      }
     }
-    &:nth-child(2) {
-      width: 60%;
-    }
+
   }
 
   :deep(.owd-list-item) {

@@ -2,9 +2,11 @@
 import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 import { useDesktopManager } from '@owdproject/core/runtime/composables/useDesktopManager'
 import { computed } from '@vue/reactivity'
+import { useWorkspaces } from '../../composables/useWorkspaces'
 
 const desktopManager = useDesktopManager()
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
+const workspaces = useWorkspaces()
 
 const classes = computed(() => {
   const list = ['owd-desktop__system-bar']
@@ -20,7 +22,7 @@ const classes = computed(() => {
 <template>
   <div :class="classes">
     <div class="owd-desktop__system-bar__left">
-      <SystemBarWorkspaces v-if="desktopManager.config.workspaces?.enabled" />
+      <SystemBarWorkspaces v-if="workspaces?.enabled" />
       <SystemBarApplicationsMenu />
     </div>
 
